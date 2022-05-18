@@ -1,0 +1,73 @@
+<style>
+  p{
+      font-size: 1rem;
+  }
+
+  .profile-container{
+      padding-top: 3rem;
+  }
+</style>
+<h1><%= @profile.first_name %> <%= @profile.last_name %></h4>
+<div class="profile-container">
+  <p>Name: <%= @profile.first_name %> <%= @profile.last_name %></p>
+  <p>Address: <%= @profile.address %></p>
+  <p>City: <%= @profile.city %></p>
+  <p>State: <%= @profile.state %></p>
+  <p>Postcode: <%= @profile.postcode %></p>
+  <%= link_to('Edit details', edit_profile_path(@profile), ) if @profile.user_id == current_user.id %>
+</div>
+
+
+<h1>My Listings</h1>
+<div class="album py-5 bg-light">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @user_items.each do |item| %>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://picsum.photos/500/200" class="card-img-top" alt="<%= item.title %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to item.title, item %></h5>
+            <p class="card-text"><%= item.description %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+              </div>
+              <large class="text">$<%= item.price %>0 / day</large>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<h1>My Bookings</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Booking ID</th>
+      <th scope="col">Item</th>
+      <th scope="col">Daily Fee</th>
+      <th scope="col">Hire Date</th>
+      <th scope="col">Return Date</th>
+      <th scope="col">Duration (days) </th>
+      <th scope="col">Total Fee </th>
+    </tr>
+  </thead>
+  <% @bookings.each do |booking| %>
+    <tbody>
+      <tr>
+          <td><%= booking.id %> </td>
+          <td><%= link_to Item.find(booking.item_id).title, Item.find(booking.item_id) %> </td>
+          <td>$<%= Item.find(booking.item_id).price %>0</td>
+          <td><%= booking.start_date %> </td>
+          <td><%= booking.end_date %> </td>
+          <td><%= duration(booking) %></td>
+          <td>$<%= total_fee(booking)  %>0</td>
+          <td><%= link_to('Manage booking', edit_booking_path(booking), class: 'btn btn-warning me-2') %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>

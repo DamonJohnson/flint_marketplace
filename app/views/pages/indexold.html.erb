@@ -1,0 +1,27 @@
+<style> 
+body {
+  background-image: url("/Users/damon/projects/term2/DamonJohnson_T2A2/flint/app/assets/images/hero.png");
+}
+</style>
+<form>
+<div class="mb-3">
+<h1 style = 'color: black'>What are you looking for?</h1>
+<select class="form-select" aria-label="Default select example">
+  <option selected>Select a category</option>
+  <option value="1">4WDs</option>
+  <option value="2">Campervans</option>
+  <option value="3">Caravans</option>
+  <option value="4">Kayaks and Canoes</option>
+  <option value="5">Boats</option> 
+  <option value="6">Camping Equipment</option>
+  <option value="7">Surf</option>
+  <option value="8">Snow</option>
+  <option value="9">Other</option>
+</select>
+</div>
+ <button type="submit" class="btn btn-primary">Search</button>
+ </form>
+
+<% content_for :hero do %>
+  <%= image_tag 'hero', class: "hero-img", style: 'width: 100vw' %>
+<% end %>

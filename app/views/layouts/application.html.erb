@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>FlintMarketplace</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+  <html>
+    <head>
+      <title>Flint</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+      
+      <style>
+        footer {
+            position: relative;
+            bottom: -700px;
+        }
 
+      </style>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+    </head>
+    <body>
+      <%= render "partials/navbar" %>
+      <div class='container'>
+        <div class="hero">
+          <%= yield :hero %>
+        </div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </body>
+  </html>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+ 
+ <footer>
+  <div class="text-center p-3">
+    © 2022 Copyright
+    <a class="text-dark" href="https://github.com/DamonJohnson/flint"><p>Damon Johnson</p></a>
+  </div>
+</footer>
+
