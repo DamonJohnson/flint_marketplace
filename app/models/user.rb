@@ -16,10 +16,10 @@ class User < ApplicationRecord
   #   end
   # end
 
-  def assign_admin_role
-    if self.email = 'flint@admin.com'
-      self.add_role :admin
-    end
-  end
+  # def assign_admin_role
+  #   if self.email = 'flint@admin.com'
+  #     self.add_role :admin
+  #   end
+  # end
 
 end

@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   # REMOVE FOR PRODUCTION!!!
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
+  before_action :check_auth
   before_action :find_booking, only: [:show, :edit, :update, :destroy, :duration]
 
   def index
@@ -19,6 +20,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = current_user.bookings.create(booking_params)
+    current_user.add_role :booking_owner, @booking
     flash.alert = "Your item has been booked"
     redirect_to profile_path(current_user)
   end
@@ -49,6 +51,10 @@ end
 
 
   private
+
+  def check_auth
+    authorize Booking
+  end
 
   def booking_params
     return params.permit(:user_id, :item_id, :start_date, :end_date)

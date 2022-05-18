@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ItemPolicy
+class ProfilePolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -13,15 +13,11 @@ class ItemPolicy
   end
 
   def show?
-    true
+    return @user.has_role? :profile_owner
   end
 
   def create?
     true
-  end
-
-   def destroy?
-    return @user.has_role? :item_owner
   end
 
   def new?
@@ -29,13 +25,16 @@ class ItemPolicy
   end
 
   def update?
-    return @user.has_role? :item_owner
+    return @user.has_role? :profile_owner
   end
 
   def edit?
-    return @user.has_role? :item_owner
+    return @user.has_role? :profile_owner
   end
 
+  def destroy?
+    return @user.has_role? :profile_owner
+  end
 
   class Scope
     def initialize(user, scope)

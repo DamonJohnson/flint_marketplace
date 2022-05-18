@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ItemPolicy
+class BookingPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -20,22 +20,21 @@ class ItemPolicy
     true
   end
 
-   def destroy?
-    return @user.has_role? :item_owner
-  end
-
   def new?
     create?
   end
 
   def update?
-    return @user.has_role? :item_owner
+    return @user.has_role? :booking_owner
   end
 
   def edit?
-    return @user.has_role? :item_owner
+    return @user.has_role? :booking_owner
   end
 
+  def destroy?
+    return @user.has_role? :booking_owner
+  end
 
   class Scope
     def initialize(user, scope)

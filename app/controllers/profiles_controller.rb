@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
 # REMOVE FOR PRODUCTION!
 skip_before_action :verify_authenticity_token
-# before_action :authenticate_user!
+before_action :authenticate_user!
+before_action :check_auth
 before_action :list_states, only: [:new, :edit]
 before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
@@ -19,6 +20,7 @@ before_action :find_profile, only: [:show, :edit, :update, :destroy]
 def create
   @profile = current_user.build_profile(profile_params)
   if @profile.save
+    current_user.add_role :profile_owner, @profile
     flash[:success] = "Profile saved"
     redirect_to @profile
   else
@@ -40,7 +42,7 @@ end
 def update
   if @profile.update(profile_params)
     flash[:success] = "Successfully updated"   
-    redirect_to show
+    redirect_to profile_path
   else
     flash[:error] = "Error"    
     render :edit
@@ -49,6 +51,10 @@ end
 
 
   private
+
+    def check_auth
+      authorize Profile
+    end
 
     def find_profile
       @profile = Profile.find(params[:id])
