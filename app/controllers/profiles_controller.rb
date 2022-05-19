@@ -20,7 +20,7 @@ before_action :list_states, only: [:new, :edit]
     @profile = current_user.build_profile(profile_params)
     @profile.save!
     current_user.add_role :profile_owner, @profile
-    flash[:success] = "Profile saved"
+    flash[:notice] = "Profile saved"
     redirect_to @profile
     rescue
     flash[:alert] = @profile.errors.full_messages.join('<br>')
@@ -40,7 +40,7 @@ before_action :list_states, only: [:new, :edit]
   def update
     begin
       @profile.update!(profile_params)
-      flash[:success] = "Successfully updated profile"   
+      flash[:notic] = "Successfully updated profile"   
       redirect_to profile_path
     rescue
       flash[:alert] = @profile.errors.full_messages.join('<br>')

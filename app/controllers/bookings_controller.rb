@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     begin
     @booking = current_user.bookings.create!(booking_params)
     current_user.add_role :booking_owner, @booking
-    flash[:success] = "Your item has been booked"
+    flash[:notice] = "Your item has been booked"
     redirect_to profile_path(current_user)
     rescue
     flash[:alert] = 'Your return date must be later than the hire date.'
@@ -42,10 +42,10 @@ class BookingsController < ApplicationController
    def update 
       begin
       @booking.update!(require_params)
-      flash[:success] = "Successfully updated"   
+      flash[:notice] = "Successfully updated"   
       redirect_to profile_path(current_user)
       rescue
-      flash[:error] = 'Your return date must be later than the hire date'
+      flash[:alert] = 'Your return date must be later than the hire date'
       render 'edit'
     end
 end
@@ -55,7 +55,7 @@ end
       @booking.update!(require_params)
       render 'edit'
       rescue
-      flash[:error] = 'Your return date must be later than the hire date'
+      flash[:alert] = 'Your return date must be later than the hire date'
       render 'edit'
       end
     end

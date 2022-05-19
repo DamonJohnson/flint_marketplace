@@ -28,10 +28,10 @@ class ItemsController < ApplicationController
     @item = current_user.items.new(item_params)
     @item.save!
     current_user.add_role :item_owner, @item
-    flash[:success] = "Item listed. Thanks for sharing"
+    flash[:notice] = "Item listed. Thanks for sharing."
     redirect_to @item
     rescue
-    flash[:alert] = @item.errors.full_messages.join('<br>')
+    flash[:alert] = @item.errors.full_messages.join('.  ')
     redirect_to new_path
     end
   end
@@ -42,10 +42,10 @@ class ItemsController < ApplicationController
   def update 
     begin
     @item.update!(require_params)
-    flash[:success] = "Successfully updated"   
+    flash[:notice] = "Successfully updated"   
     redirect_to item_path(@item)
     rescue
-    flash[:alert] = @item.errors.full_messages.join('<br>')   
+    flash[:alert] = @item.errors.full_messages.join('.  ')   
     render 'edit'
     end
   end

@@ -15,4 +15,6 @@ module ApplicationHelper
     return duration(booking) * Item.find(booking.item_id).price
   end
 
+  
+
 end
