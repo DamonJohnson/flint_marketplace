@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.create(item_params)
+    @item = current_user.items.create(require_params)
     current_user.add_role :item_owner, @item
     redirect_to @item 
     flash[:success] = "Item listed. Thanks for sharing"

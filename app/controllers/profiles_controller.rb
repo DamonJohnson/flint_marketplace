@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 skip_before_action :verify_authenticity_token
 before_action :authenticate_user!
 before_action :find_profile, only: [:show, :edit, :update, :destroy, :check_auth]
-before_action :check_auth
+before_action :check_auth, only: [:show, :edit, :update, :destroy]
 before_action :list_states, only: [:new, :edit]
 
 
