@@ -66,8 +66,7 @@
           <td><%= booking.end_date %> </td>
           <td><%= duration(booking) %></td>
           <td>$<%= total_fee(booking)  %>0</td>
-          <td><%= link_to('Manage booking', edit_booking_path(booking), class: 'btn btn-warning me-2') %>
-          </td>
+          <td><%= link_to('Manage booking', edit_booking_path(booking), class: 'btn btn-warning me-2') %></td>
       </tr>
     <% end %>
   </tbody>

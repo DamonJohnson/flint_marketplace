@@ -7,22 +7,28 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings.all
-    
+
   end
 
   def new
-    Booking.new
+    @item = Item.find(params[:item_id]) 
   end
 
   def show
+
   end
 
 
   def create
-    @booking = current_user.bookings.create(booking_params)
+    begin
+    @booking = current_user.bookings.create!(booking_params)
     current_user.add_role :booking_owner, @booking
-    flash.alert = "Your item has been booked"
+    flash[:success] = "Your item has been booked"
     redirect_to profile_path(current_user)
+    rescue
+    flash[:alert] = 'Your return date must be later than the hire date.'
+    redirect_to new
+    end
   end
 
   def destroy
@@ -34,12 +40,13 @@ class BookingsController < ApplicationController
   end
 
    def update 
-    if @bookings.update(require_params)
+      begin
+      @booking.update!(require_params)
       flash[:success] = "Successfully updated"   
-      redirect_to edit
-    else
-      flash[:error] = "Error"   
-      render :edit
+      redirect_to profile_path(current_user)
+      rescue
+      flash[:error] = 'Your return date must be later than the hire date'
+      render 'edit'
     end
 end
 

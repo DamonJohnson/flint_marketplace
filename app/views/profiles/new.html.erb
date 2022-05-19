@@ -18,14 +18,15 @@
     <%= f.text_field :city %>
   </fieldset>
   <fieldset class="mb-2">
-    <%= f.label :postcode %>:
-    <%= f.text_field :postcode %>
-  </fieldset>
-  <fieldset class="mb-2">
     <%= f.label :state %>:
     <%= f.select :state, @states %>
+  </fieldset>
+   <fieldset class="mb-2">
+    <%= f.label :postcode %>:
+    <%= f.text_field :postcode %>
   </fieldset>
   <fieldset>
     <%= f.submit class: 'btn btn-primary' %>    
   </fieldset>
-<% end %>
+  <% end %>
+

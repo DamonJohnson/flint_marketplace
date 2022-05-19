@@ -15,17 +15,18 @@ before_action :list_states, only: [:new, :edit]
   @profile = current_user.build_profile
   end
 
-def create
-  @profile = current_user.build_profile(profile_params)
-  if @profile.save
+  def create
+    begin
+    @profile = current_user.build_profile(profile_params)
+    @profile.save!
     current_user.add_role :profile_owner, @profile
     flash[:success] = "Profile saved"
     redirect_to @profile
-  else
-    flash[:error] = "Error"
+    rescue
+    flash[:alert] = @profile.errors.full_messages.join('<br>')
     redirect_to new
+    end
   end
-end
 
   def show
     @profile = Profile.find(params[:id])
@@ -33,18 +34,19 @@ end
     @bookings = current_user.bookings.all
   end
 
-def edit
-end
-
-def update
-  if @profile.update(profile_params)
-    flash[:success] = "Successfully updated"   
-    redirect_to profile_path
-  else
-    flash[:error] = "Error"    
-    render :edit
+  def edit
   end
-end
+
+  def update
+    begin
+      @profile.update!(profile_params)
+      flash[:success] = "Successfully updated profile"   
+      redirect_to profile_path
+    rescue
+      flash[:alert] = @profile.errors.full_messages.join('<br>')
+      redirect_to edit_profile_path
+    end
+  end
 
 
   private
@@ -58,7 +60,7 @@ end
   end
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :address, :city, :postode, :state)
+    params.require(:profile).permit(:first_name, :last_name, :address, :city, :postcode, :state)
   end
 
   def list_states

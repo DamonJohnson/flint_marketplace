@@ -27,7 +27,7 @@
 
 
 <h2>Change Booking Duration</h2>
-<%= form_with(model: @bookings, data: {turbo: false})  do |f| %>
+<%= form_with(model: @booking, url: edit_booking_path(@booking), method: 'patch', data: {turbo: false})  do |f| %>
   <fieldset class="mb-2">
     <%= f.label 'Hire date:' %>
     <%= f.date_field :start_date %>
@@ -37,7 +37,7 @@
     <%= f.date_field :end_date %>
   </fieldset>
    <fieldset>
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-primary', method: :patch %>
   </fieldset>
 <% end %>
 

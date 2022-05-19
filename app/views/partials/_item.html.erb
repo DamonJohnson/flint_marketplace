@@ -1,0 +1,13 @@
+
+<div class="px-4 py-5 my-5 text-center">
+  <img class="d-block mx-auto mb-4" src="app/assets/images/hero.png" alt="" width="100vw">
+  <h1 class="display-5 fw-bold"><%= @item.title %></h1>
+  <% if @item.image.attached?%>
+    <%= cl_image_tag @item.image.key, crop: :scale, width: 450, cloud_name: 'damonjohnson' %>
+  <% end %>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Category: <%= @item.category.name %></p>
+    <p class="lead mb-4">Description: <%= @item.description %></p>
+    <p class="lead mb-4">Price: $<%= @item.price %>0 / day</p>
+  </div>
+ </div>

@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, only: [:show, :edit, :update, :destroy, :check_auth]
   before_action :check_auth, only: [:edit, :update, :destroy]
-  before_action :get_categories, only: [:new, :edit]
+  before_action :get_categories, only: [:new, :edit, :update, :create]
 
  
   
@@ -16,29 +16,35 @@ class ItemsController < ApplicationController
   end
 
   def new
-    Item.new
+
   end
 
   def create
-    @item = current_user.items.create(require_params)
+    begin
+    @item = current_user.items.new(item_params)
+    @item.save!
     current_user.add_role :item_owner, @item
-    redirect_to @item 
     flash[:success] = "Item listed. Thanks for sharing"
+    redirect_to @item
+    rescue
+    flash[:alert] = @item.errors.full_messages.join('<br>')
+    redirect_to new_path
+    end
   end
 
   def edit
-     authorize @item
   end
 
   def update 
-  if @item.update(require_params)
+    begin
+    @item.update!(require_params)
     flash[:success] = "Successfully updated"   
     redirect_to item_path(@item)
-  else
-    flash[:error] = "Error"   
-    render :edit
+    rescue
+    flash[:alert] = @item.errors.full_messages.join('<br>')   
+    render 'edit'
+    end
   end
-end
 
   def destroy  
     # @item.image.purge
