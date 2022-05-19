@@ -30,7 +30,7 @@ before_action :list_states, only: [:new, :edit]
 
   def show
     @profile = Profile.find(params[:id])
-    @user_items = current_user.items.all
+    @items = current_user.items.all
     @bookings = current_user.bookings.all
   end
 

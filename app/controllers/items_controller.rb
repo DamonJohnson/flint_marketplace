@@ -9,8 +9,12 @@ class ItemsController < ApplicationController
  
   
   def index
-    @items = Item.all
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+    
   end
+
+
 
   def show
   end
@@ -67,7 +71,6 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
-  # params.permit method returns strong params and accepts only the specified parameters and removes controller and action. This protects against SQL injection.
   def item_params
     return params.permit(:title, :description, :price, :user_id, :category_id, :image)
   end

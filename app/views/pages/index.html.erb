@@ -1,44 +1,35 @@
-<% content_for :hero do %>
-  <style>
-    footer {
-        position: relative;
-        bottom: -460px;
-        color: white;
-    }
-
-    p {
+<style>
+  footer {
+      position: relative;
+      bottom: -460px;
       color: white;
-    }
+  }
 
-    .cat-search {
-      padding-top: 15rem;
-    }
+  p {
+    color: white;
+  }
 
-    body {
-      background-image: url('https://images.wallpaperscraft.com/image/single/suv_valley_road_114745_1920x1080.jpg');
-      background-repeat: no-repeat;
-    }
-  </style>
-  <body>
-    <form class = "cat-search">
-      <div class="mb-3">
-        <h1 style = 'color: white'>What are you looking for?</h1>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Select a category</option>
-          <option value="1">4WDs</option>
-          <option value="2">Campervans</option>
-          <option value="3">Caravans</option>
-          <option value="4">Kayaks and Canoes</option>
-          <option value="5">Boats</option>
-          <option value="6">Camping Equipment</option>
-          <option value="7">Surf</option>
-          <option value="8">Snow</option>
-          <option value="9">Other</option>
-        </select>
-      </div>
-      <a href="/items">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </a>
-    </form>
+  .cat-search {
+    padding-top: 15rem;
+  }
+
+  body {
+    background-image: url('https://images.wallpaperscraft.com/image/single/suv_valley_road_114745_1920x1080.jpg');
+    background-repeat: no-repeat;
+  }
+
+  .form-group {
+    padding-left: 15vw;
+    padding-right: 15vw;
+   }
+   
+
+</style>
+
+<body>
+  <div class="form-group">
+    <div class="cat-search">
+      <h1 style = 'color: white'>What are you looking for?</h1>
+      <%= render 'partials/search' %>
+    </div>
   </body>
-<% end %>

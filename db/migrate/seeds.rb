@@ -32,7 +32,7 @@ christine.save
 # Profile.create(user_id: User.third.id, first_name: 'randal', last_name: 'johnson', address: "123 Foo Street", city: 'Brisbane', postcode: 4000, state: 'Queensland')
 # Profile.create(user_id: User.last.id, first_name: 'greg', last_name: 'simpson', address: "4 Collins Street", city: 'Docklands', postcode: 3005, state: 'Victoria')
 
-categories = Category.create([{name: "4WDs"},{name: "Campervans"},{name: "Caravans"},{name: "Kayaks and Canoes"},{name: "Boats"},{name: "Camping Equipment"},{name: "Surf"},{name: "Snow"}])
+# categories = Category.create([{name: "4WDs"},{name: "Campervans"},{name: "Caravans"},{name: "Kayaks and Canoes"},{name: "Boats"},{name: "Camping Equipment"},{name: "Surf"},{name: "Snow"}])
 
 
 
