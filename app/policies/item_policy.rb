@@ -21,7 +21,7 @@ class ItemPolicy
   end
 
    def destroy?
-    return @user.has_role? :item_owner
+    return @user.has_role? :item_owner, @item
   end
 
   def new?
@@ -29,7 +29,7 @@ class ItemPolicy
   end
 
   def update?
-    return @user.has_role? :item_owner
+    return @user.has_role? :item_owner, @item
   end
 
   def edit?

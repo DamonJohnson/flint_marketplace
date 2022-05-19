@@ -4,7 +4,9 @@
     <% @items.each do |item| %>
       <div class="col">
         <div class="card h-100">
-          <img src="https://picsum.photos/500/200" class="card-img-top" alt="<%= item.title %>">
+          <% if item.image.attached?%>
+            <%= cl_image_tag item.image.key, crop: :scale, width: 414, cloud_name: 'damonjohnson' %>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to item.title, item %></h5>
             <p class="card-text"><%= item.description %></p>
@@ -20,5 +22,3 @@
     <% end %>
   </div>
 </div>
-
-

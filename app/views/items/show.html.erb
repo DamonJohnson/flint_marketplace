@@ -1,19 +1,20 @@
 <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="app/assets/images/hero.png" alt="" width="100vw">
-    <h1 class="display-5 fw-bold"><%= @item.title %></h1>
-    <%= cl_image_tag @item.image.key, crop: :scale, width: 450 %>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Description: <%= @item.description %></p>
-      <p class="lead mb-4">Price: $<%= @item.price %>0 / day</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <%= link_to('Book item', new_booking_path(@item), class: 'btn btn-warning me-2') if @item.user_id != current_user.id %> 
-        <%# <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> %>
-      </div>
+  <img class="d-block mx-auto mb-4" src="app/assets/images/hero.png" alt="" width="100vw">
+  <h1 class="display-5 fw-bold"><%= @item.title %></h1>
+  <% if @item.image.attached?%>
+    <%= cl_image_tag @item.image.key, crop: :scale, width: 450, cloud_name: 'damonjohnson' %>
+  <% end %>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Description: <%= @item.description %></p>
+    <p class="lead mb-4">Price: $<%= @item.price %>0 / day</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <%= link_to('Book item', new_booking_path(@item), class: 'btn btn-warning me-2') if @item.user_id != current_user.id %>
+      <%# <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> %>
     </div>
   </div>
-
+</div>
 <%# Use the check url method that was used for show profile %>
-  <div class="btn-toolbar">
-    <%= link_to('Edit Item', edit_item_path(@item), class: 'btn btn-warning me-2') if @item.user_id == current_user.id %> 
-    <%= button_to('Delete', @item, class: 'btn btn-danger', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@item.title}' ?" } }) if @item.user_id == current_user.id %>
-  </div>
+<div class="btn-toolbar">
+  <%= link_to('Edit Item', edit_item_path(@item), class: 'btn btn-warning me-2') if @item.user_id == current_user.id %>
+  <%= button_to('Delete', @item, class: 'btn btn-danger', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete '#{@item.title}' ?" } }) if @item.user_id == current_user.id %>
+</div>
