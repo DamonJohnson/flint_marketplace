@@ -13,7 +13,7 @@ class ProfilePolicy
   end
 
   def show?
-    return @user.has_role? :profile_owner
+    return @user.has_role? :profile_owner, @record
   end
 
   def create?
@@ -25,15 +25,15 @@ class ProfilePolicy
   end
 
   def update?
-    return @user.has_role? :profile_owner
+    return @user.has_role? :profile_owner, @record
   end
 
   def edit?
-    return @user.has_role? :profile_owner
+    return @user.has_role? :profile_owner, @record
   end
 
   def destroy?
-    return @user.has_role? :profile_owner
+    return @user.has_role? :profile_owner, @record
   end
 
   class Scope

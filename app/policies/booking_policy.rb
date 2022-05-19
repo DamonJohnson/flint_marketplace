@@ -25,15 +25,15 @@ class BookingPolicy
   end
 
   def update?
-    return @user.has_role? :booking_owner
+    return @user.has_role? :booking_owner, @record
   end
 
   def edit?
-    return @user.has_role? :booking_owner
+    return @user.has_role? :booking_owner, @record
   end
 
   def destroy?
-    return @user.has_role? :booking_owner
+    return @user.has_role? :booking_owner, @record
   end
 
   class Scope

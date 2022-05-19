@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, only: [:show, :edit, :update, :destroy, :check_auth]
-  # before_action :check_auth, only: [:edit, :update, :destroy]
+  before_action :check_auth, only: [:edit, :update, :destroy]
   before_action :get_categories, only: [:new, :edit]
 
  
@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
   end
 
   def update 
-  authorize @item
   if @item.update(require_params)
     flash[:success] = "Successfully updated"   
     redirect_to item_path(@item)
@@ -42,7 +41,6 @@ class ItemsController < ApplicationController
 end
 
   def destroy  
-    authorize @item
     # @item.image.purge
     @item.destroy
     redirect_to items_path

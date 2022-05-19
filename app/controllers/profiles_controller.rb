@@ -2,15 +2,13 @@ class ProfilesController < ApplicationController
 # REMOVE FOR PRODUCTION!
 skip_before_action :verify_authenticity_token
 before_action :authenticate_user!
+before_action :find_profile, only: [:show, :edit, :update, :destroy, :check_auth]
 before_action :check_auth
 before_action :list_states, only: [:new, :edit]
-before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
-# respond_to :html
 
   def index
     @profiles = Profile.all
-   
   end
 
   def new 
@@ -36,7 +34,6 @@ end
   end
 
 def edit
-  
 end
 
 def update
@@ -52,13 +49,13 @@ end
 
   private
 
-    def check_auth
-      authorize Profile
-    end
+  def check_auth
+    authorize @profile
+  end
 
-    def find_profile
-      @profile = Profile.find(params[:id])
-    end
+  def find_profile
+    @profile = Profile.find(params[:id])
+  end
 
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :address, :city, :postode, :state)
