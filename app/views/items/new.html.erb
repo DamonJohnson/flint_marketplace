@@ -1,27 +1,7 @@
+
+
+
 <h1>Add an item</h1>
 <br>
-<%= form_with(model: @item, data: {turbo: false}) do |f| %>
-  <fieldset class="mb-2">
-    <%= f.label :title %>:
-    <%= f.text_field :title %>
-  </fieldset>
-  <fieldset class="mb-2">
-    <%= f.label :description %>:
-    <%= f.text_field :description %>
-  </fieldset>
-  <fieldset class="mb-2">
-  <%= f.label :category_id %>:
-    <%= f.collection_select :category_id, @categories, :id, :name %>
-  </fieldset>
-   <fieldset class="mb-2">
-    <%= f.label :price %>:
-    <%= f.number_field :price %>
-  </fieldset>
-  <fieldset class="mb-2">
-    <%= f.label :image %>:
-    <%= f.file_field :image %>
-  </fieldset>
-  <fieldset>
-    <%= f.submit class: 'btn btn-primary' %>
-  </fieldset>
-<% end %>
+
+<%= render 'partials/item_form' %>

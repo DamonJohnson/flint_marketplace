@@ -1,0 +1,70 @@
+<style>
+
+.mb-2 input{
+    width: 100%!important;
+    height: 2rem;
+}
+
+.mb-3 input{
+    height: 6rem;
+    width: 100%!important;
+}
+
+fieldset.mb-2-2{
+  width: 100%!important;
+}
+
+</style>
+
+<%= form_with(model: @item, data: {turbo: false}) do |f| %>
+  <table class="table">
+    <thead>
+      
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Title:</th>
+        <td>  
+          <fieldset class="mb-2">
+            <%= f.text_field :title %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Description:</th>
+        <td>
+          <fieldset class="mb-3">
+            <%= f.text_field :description %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Categories:</th>
+        <td>  
+          <fieldset class="mb-2-2">
+            <%= f.collection_select :category_id, @categories, :id, :name %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Daily Fee:</th>
+        <td>
+          <fieldset class="mb-2">
+            <%= f.number_field :price %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Item Photo:</th>
+        <td>
+          <fieldset class="mb-2">
+            <%= f.file_field :image %>
+          </fieldset>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <fieldset>
+    <%= f.submit class: 'btn btn-primary' %>
+  </fieldset>
+<% end %>

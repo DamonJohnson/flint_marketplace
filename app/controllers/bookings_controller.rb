@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   # REMOVE FOR PRODUCTION!!!
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
-  before_action :find_booking, only: [:show, :edit, :update, :destroy, :duration, :check_auth]
+  before_action :find_booking, only: [:show, :edit, :update, :save, :destroy, :duration, :check_auth]
   before_action :check_auth, only: [:update, :edit, :show, :destroy]
 
   def index
@@ -50,7 +50,15 @@ class BookingsController < ApplicationController
     end
 end
 
-
+    def save 
+      begin
+      @booking.update!(require_params)
+      render 'edit'
+      rescue
+      flash[:error] = 'Your return date must be later than the hire date'
+      render 'edit'
+      end
+    end
 
   def total_fee
     return
