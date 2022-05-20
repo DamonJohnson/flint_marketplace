@@ -21,27 +21,26 @@
     <body>
       <%= render "partials/navbar" %>
       <% if notice %>
-      <br></br>
         <p class="alert alert-info notice" role="alert"><%= notice %></p>
       <% end %>
       <% if alert %>
-      <br></br>
         <p class="alert alert-danger" role="alert"><%= alert %></p>
       <% end %>
       <div class='container'>
         <div class="hero">
           <%= yield :hero %>
         </div>
-        <br></br>
-        <%= yield %>
-      </div>
-    </body>
-  </html>
-  <footer>
-    <div class="text-center p-3">
-      © 2022 Copyright
-      <a class="text-dark" href="https://github.com/DamonJohnson/flint_marketplace">
-        <p>Damon Johnson</p>
-      </a>
+        <br>
+      </br>
+      <%= yield %>
     </div>
-  </footer>
+  </body>
+</html>
+<footer>
+  <div class="text-center p-3">
+    © 2022 Copyright
+    <a class="text-dark" href="https://github.com/DamonJohnson/flint_marketplace">
+      <p>Damon Johnson</p>
+    </a>
+  </div>
+</footer>
