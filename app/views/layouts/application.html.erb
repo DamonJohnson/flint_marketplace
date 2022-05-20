@@ -21,9 +21,11 @@
     <body>
       <%= render "partials/navbar" %>
       <% if notice %>
+      <br></br>
         <p class="alert alert-info notice" role="alert"><%= notice %></p>
       <% end %>
       <% if alert %>
+      <br></br>
         <p class="alert alert-danger" role="alert"><%= alert %></p>
       <% end %>
       <div class='container'>

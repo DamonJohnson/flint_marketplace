@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
     flash[:notice] = "Your item has been booked"
     redirect_to profile_path(current_user.profile)
     rescue
-    flash[:alert] = @booking.errors.full_messages.join('.  ')
+    flash[:alert] = "Invalid entry. Make sure return date is later than hire date."
     redirect_to new
     end
   end
@@ -46,7 +46,7 @@ class BookingsController < ApplicationController
       # Renders edit so the user can save the adjusted booking duration to check the updated total fee. User can then return to other pages when they are happy with updated price.
       render 'edit'
       rescue
-      flash[:alert] = 'Your return date must be later than the hire date'
+      flash[:alert] = "Invalid entry. Make sure return date is later than hire date."
       render 'edit'
       end
     end
