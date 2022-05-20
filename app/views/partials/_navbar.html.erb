@@ -90,12 +90,12 @@
                 <%= link_to 'View listings', items_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Add Listing', new_path, class: 'nav-link' %>
+                <%= link_to 'Add listing', new_path, class: 'nav-link' %>
               </li>
             </ul>
             <% if user_signed_in? && user_has_profile?  %>
               <div class="navbar-text">
-                <%= link_to 'My Account',  profile_path(current_user.profile.id), id: 'nav-li3', class: 'nav-link' %>
+                <%= link_to 'My account',  profile_path(current_user.profile.id), id: 'nav-li3', class: 'nav-link' %>
               </div>
               <div class="navbar-text">
               <%= button_to 'Logout', destroy_user_session_path,  id: 'nav-li4', class: 'btn-nav', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to log out? " } } %>

@@ -20,7 +20,6 @@
     </head>
     <body>
       <%= render "partials/navbar" %>
-      <br>
       <% if notice %>
         <p class="alert alert-info notice" role="alert"><%= notice %></p>
       <% end %>
@@ -31,6 +30,7 @@
         <div class="hero">
           <%= yield :hero %>
         </div>
+        <br></br>
         <%= yield %>
       </div>
     </body>
