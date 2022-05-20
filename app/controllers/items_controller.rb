@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy  
-    @item.image.purge
+    # @item.image.purge
     @item.destroy
     redirect_to items_path
   end
