@@ -1,25 +1,4 @@
-<%# <style>
-  .py-5 {
-      padding-left: 3rem;
-      padding-right: 3rem;
-  }
 
-  .price {
-    position: absolute;
-    right: 1rem;
-    bottom: -2rem;
-  }
-
-
-  div.card-body {
-    position: absolute;
-    width: 100%;
-    bottom: 3rem;
-    background-color: white;
-    z-index: 10;
-
-  } %>
-</style>
 <% if @items.length == 0 %>
   <br>
 </br>
@@ -40,7 +19,6 @@
                 <div class="btn-group">
                   <p class="card-text"></p>
                 </div>
-
                 <large class="price">$<%= item.price %>0 / day</large>
               </div>
             </div>
