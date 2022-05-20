@@ -1,7 +1,7 @@
 # README
 
 # Two Sided Marketplace for Sharing Outdoors Equipment and Adventure Vehicles
-## Developed by Damon Johnson
+## Damon Johnson
 
 ### R7 - Problem Identification
 As more and more jobs are becoming computer based, individuals often seek outdoor recreation and travel to achieve balance in their lives. The average full time worker in Australia has the right to four weeks of leave per year while the average full time worker in the United States has just 16 paid days of annual leave. We are living in a world where we are spending more time at work which makes our time off all the more precious. In order to seek out adventure in our limited time off we may need specialty equipment or vehicles to reach remote areas or simply have fun. Snowboarding isn't quite the same without a snowboard.
@@ -12,22 +12,21 @@ My solution to this problem is a two sided marketplace for sharing outdoors equi
 
 
 ### R8 - Why Does the Problem Need Solving
-
 By solving this problem, an application like Flint could forseeably have the following flow on effects:
 
-*Sustainability*
+#### Sustainability
 Increasing the sharing of goods means that as society we are consuming less which has wide positive impacts on sustainability. This is an ever present and growing issues worldwide and can the most direct way consumers can impact sustainability is by reducing their personal level of consumption.
 
-*A low cost alternative to adventure*
+#### A low cost alternative to adventure
 By provinging a simple and low cost way of hiring equipment and vehicles lowers the barrier of entry for lower income earners to enjoy the outdoors.
 
-*Adventure Travel*
+#### Adventure Travel
 Users can travel to a location and then hire equipment at their destination rather than transporting equipment or vehicles long distances to be enjoyed.
 
-*Income for Sharers*
+#### Income for Sharers
 Users that choose to share their own outdoors equipment and adventure vehicles can generate passive income for assets that are often severly underused. 
 
-*Community*
+#### Community
 Creates a positive community for people who enjoy the outdoors to meet like minded inviduals. In addition to sharing of equipment and vehicles Flint would look to become a community for sharing knowledge about the outdoors and a place for people to make connections.
 
 
@@ -77,24 +76,25 @@ Planned Features
 
 
 ##### Sitemap
-![Site map](docs/Site-map.drawio.png.jpg)
+![Site map](docs/Site-map.drawio.png)
 
 
 ##### Screenshots
-Landing Page:
-![Landing page](docs/screenshot1.jpg)
 
-Index Page:
-![Index page](docs/screenshot4.jpg)
+##### Landing Page:
+![Landing page](docs/screenshot1.jpeg)
 
-Item Page:
-![Item page](docs/screenshot5.jpg)
+##### Index Page:
+![Index page](docs/screenshot4.jpeg)
 
-Add Listing Page:
-![Add Listing Page](docs/screenshot6.jpg)
+##### Item Page:
+![Item page](docs/screenshot5.jpeg)
 
-Account Dashboard:
-![Account Dashboard](docs/screenshot3.jpg)
+##### Add Listing Page:
+![Add Listing Page](docs/screenshot6.jpeg)
+
+##### Account Dashboard:
+![Account Dashboard](docs/screenshot3.jpeg)
 
 
 ##### Target audience
@@ -148,37 +148,35 @@ A calendar feature needs to be implemented to each item to ensure that bookings 
 ### R13 - Wireframes
 For complete set of wireframes refer to the wireframes.pdf file contained in the docs folder.
 
-Desktop add listing
-![Desktop add listing](docs/wireframes/001.png)
+#### Desktop add listing
+![Desktop add listing](docs/001.jpeg)
 
-Desktop New/Edit Profile
-![Desktop Profile](docs/wireframes/002.png)
+#### Desktop New/Edit Profile
+![Desktop Profile](docs/002.jpeg)
 
 Desktop - Confirm Booking
-![Desktop - Confirm Booking](docs/wireframes/003.png)
+![Desktop - Confirm Booking](docs/003.jpeg)
 
-Mobile Landing page
-![Movile Landing page](docs/wireframes/004.png)
+#### Mobile Landing page
+![Movile Landing page](docs/004.jpeg)
 
-Mobile Sign up
-![Mobile Sign Up](docs/wireframes/005.png)
+#### Mobile Sign up
+![Mobile Sign Up](docs/005.jpeg)
 
-Mobile Index Items
-![Mobile Index Items](docs/wireframes/006.png)
+#### Mobile Index Items
+![Mobile Index Items](docs/006.jpeg)
 
-Tablet Add Listing
-![Tablet Add Listing](docs/wireframes/007.png)
+#### Tablet Add Listing
+![Tablet Add Listing](docs/007.jpeg)
 
-Tablet Show Listing
-![Table Show Listing](docs/wireframes/008.png)
+#### Tablet Show Listing
+![Table Show Listing](docs/008.jpeg)
 
 
 ### R14 - Entity Relationship Diagram (ERD)
 ![Entity Relationship Diagram](docs/ERD.png)
 
 ### R15 - High-level Components (Abstractions)
-Refers to models or entities in the ERD. Explain them individually, how do they relate, and why do they exist in the first place. Why does the abstraction need to be in the app.
-
 The abstractions from the ERD can be summarised by the following models.
 
 #### Models
@@ -219,14 +217,14 @@ The booking controller allows the user to create new bookings for the items. The
 
 ### R16 - Third Party Services
 
-*Postgresql*
+#### Postgresql
 Postgresql has been used as the database management system in both development and produciton. 
 Postgresql is an open source DBMS that has been used to store persistent data that is used by the application. Postgresql is an enterprise scale DBMS that is known for reliability, scalability and its ability to support a range of advanced datatypes. 
 
-*Heroku*
+#### Heroku
 The application has been deployed on to Heroku's cloud platform. Heroku obtains the latest commit from github and runs the application through dynos. While the application is deployde directly though Heroku, Heroku itself is built upon Amazon Web Services infrastructure.
 
-*Cloudinary*
+#### Cloudinary
 Image handling is managed through Cloudinary. Cloudinary allows users to upload images which are then stored and manipulated by cloudinary for delivery on the web application.
 Cloudinary ensures photos are optimized for download as well offering methods of managing content cropping and scaling to fit within the layout of the application view. This is of particular importance in the items index pages that lists various item photos of difference sizes in rows of item cards.
 
@@ -235,12 +233,12 @@ Cloudinary ensures photos are optimized for download as well offering methods of
 So when we need to explain the abstractions as part of R17, we want to explain why some resources have views, some do not, some have controllers, some do not, some have validation requirements, some do not
 
 
-**User Model**
-`has_one :profile, dependent: :destroy`
+##### User Model
+##### `has_one :profile, dependent: :destroy`
 The user model's `has_one` relationship with the profile model ensures that each user is linked to one and one one profile. The user record is created first and is then followde by creating a profile that is linked to the user record. As the profile has a `dependent:` association to the user, the profile cannot exist without the user. If the user record is deleted, the associated profile record is also deleted.
 
 
-`has_many :items, dependent: :destroy`
+##### `has_many :items, dependent: :destroy`
 The user models `has_many` relationship with the item model allows the user to create zero or many items that belong to the user. The users items can be directly called in active record through this association. As the item has a `dependent:` association to the user, the  item cannot exist without the user. If the user record is deleted, the associated item is also deleted.
 
 
@@ -248,48 +246,48 @@ The user models `has_many` relationship with the item model allows the user to c
 The relationship from user to bookings is largely the same as the relationship from user to items. The user record is created first and then can create zero or many bookings that are associated with the user. The booking model is also depedent on the user in the same way as the profile and item model.
 
 
-**Item Model**
-`belongs_to :category`
+#### Item Model
+##### `belongs_to :category`
 The item models `belongs_to` relationship with the item model means the the category can exist without the item. The category is not dependent on the item. The item can have one and only one category which is represented within the item table as a category_id foreign key.
 
-`belongs_to :user`
+##### `belongs_to :user`
 The item models `belongs_to` relationship with the user model means that user can exist without the item but the item cannot exist without the user. Each item record can must have one and only one user that is associated to. The user represents the item's owner who is responsible for listing the item in the marketplace and is represented within the item table by the user_id foreign key.
 
-`has_many :bookings`
+##### `has_many :bookings`
 The item models `has_many` relationship to the booking model means that an item can be booked by multiple users for multiple dates at any given time. The item can also have zero bookings.
 
-`has_one_attached :image`
+##### `has_one_attached :image`
 The item models `has_one_attached` relationship to images means that a user can attach a single image when they create an instance of the Item class. The Item model also performs validation to ensure that a image is attached.
 
-**Category Model**
-`has_many :items`
+#### Category Model
+##### `has_many :items`
 The category models `has_many` relationship with the item model means that each category can be associated to zero or many items.
 
-**Profile Model**
-`belongs_to :user`
+#### Profile Model
+##### `belongs_to :user`
 The profile models `belongs_to` relationship with the user model means that each profile must have one and only one user that it is associated to. The profile cannot exist without the user. The profile table has a column that stored the user_id as a foreign key for association to the user. 
 
-**Booking Model**
-`belongs_to :user`
+#### Booking Model
+##### `belongs_to :user`
 The booking models `belongs_to` relationship with the user model means that the booking cannot exist without the user and that the booking is associated with one and only one user. The user_id is stored in the booking table as a foreign key for association. The user represents the person who has created the booking. Another user can be linked to the booking through the item as the owner of the item that is being shared to the user who created the booking. The user who is the owner of the item is not directly stored within the booking table and must be obtained through active record by first referencing the item from the booking.
 
-`belongs_to :item`
+##### `belongs_to :item`
 The booking models `belongs_to` relationship with the item means that each booking record is associated to one and only one item and the booking cannot exist without the item. The item_id is stored as foreign key in the booking table.
 
 ### R18 - Database Relations
-**User Model**
+#### User Model
 The user model contains a user_id as a primary key, and has a column for email (string) and password (string). The user model has a one to one relationship with the profile model and a one to many relationship to the item model and booking model.
 
-**Profile Model**
+##### Profile Model
 The profile model contains a profile_id as a primary key and has columns for first name(string), last name (string), address (string), city (string), postcode (integer), and state (string). The profile has a one to one relationship with the user model. Meaning
 
-**Item Model**
+#### Item Model
 The item model contains an item_id as a primary key and has columns for title (string), description (string), price (float). It also stores foreign keys for the user model and category model to allow for their association to be represented in active record. The item model has a many to one relationship with the user and category models and a one to many relationship with the booking model.
 
-**Category Model**
+##### Category Model
 The category model contains a category_id as a primary key and has a column for category name (string) which represents the type of category from a predetermined list. The category model has a one to one relationship with the item model. 
 
-**Booking Model**
+#### Booking Model
 The booking model contains a booking_id as a primary key and has a column for the start date (date) and end date (date). Associations for the user model and item model are made possible by the user_id and item_id that are stored as foreign keys for each booking record. The booking model has a many to one relationship with the user who is responsible for making the booking as well as a many to one relationship with the item model.
 
 

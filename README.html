@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="readme">README</h1>
+<h1 id="two-sided-marketplace-for-sharing-outdoors-equipment-and-adventure-vehicles">Two Sided Marketplace for Sharing Outdoors Equipment and Adventure Vehicles</h1>
+<h2 id="damon-johnson">Damon Johnson</h2>
+<h3 id="r7---problem-identification">R7 - Problem Identification</h3>
+<p>As more and more jobs are becoming computer based, individuals often seek outdoor recreation and travel to achieve balance in their lives. The average full time worker in Australia has the right to four weeks of leave per year while the average full time worker in the United States has just 16 paid days of annual leave. We are living in a world where we are spending more time at work which makes our time off all the more precious. In order to seek out adventure in our limited time off we may need specialty equipment or vehicles to reach remote areas or simply have fun. Snowboarding isn't quite the same without a snowboard.</p>
+<p>But if we are only spending a few weeks a year seeking out adventure, is it really worth investing in the latest gear and purpose built vehicles? These products can be highly expensive to purchase and maintain and are criminally under-utilised by the average consumer. Previously our options were limited. We either invested large sums of money to purchase expensive specialty equipment and vehicles that would be used just a couple of times a year before being placed back in the garage to collect dust or worse yet the outdoors would left largely unexplored and unenjoyed.</p>
+<p>My solution to this problem is a two sided marketplace for sharing outdoors equipment and adventure vehicles that I have named Flint. Currently there are established sharing platforms for individual item categories such as boats or caravans. Flint aims to be a marketplace that caters for all areas of outdoors adventure and recreation. By allowing users to share and borrow vehicles that will allow them to get to their end destination as well as the equipment they need to enjoy it once they arrive.</p>
+<h3 id="r8---why-does-the-problem-need-solving">R8 - Why Does the Problem Need Solving</h3>
+<p>By solving this problem, an application like Flint could forseeably have the following flow on effects:</p>
+<h4 id="sustainability">Sustainability</h4>
+<p>Increasing the sharing of goods means that as society we are consuming less which has wide positive impacts on sustainability. This is an ever present and growing issues worldwide and can the most direct way consumers can impact sustainability is by reducing their personal level of consumption.</p>
+<h4 id="a-low-cost-alternative-to-adventure">A low cost alternative to adventure</h4>
+<p>By provinging a simple and low cost way of hiring equipment and vehicles lowers the barrier of entry for lower income earners to enjoy the outdoors.</p>
+<h4 id="adventure-travel">Adventure Travel</h4>
+<p>Users can travel to a location and then hire equipment at their destination rather than transporting equipment or vehicles long distances to be enjoyed.</p>
+<h4 id="income-for-sharers">Income for Sharers</h4>
+<p>Users that choose to share their own outdoors equipment and adventure vehicles can generate passive income for assets that are often severly underused.</p>
+<h4 id="community">Community</h4>
+<p>Creates a positive community for people who enjoy the outdoors to meet like minded inviduals. In addition to sharing of equipment and vehicles Flint would look to become a community for sharing knowledge about the outdoors and a place for people to make connections.</p>
+<h3 id="r9---link">R9 - Link</h3>
+<p>https://git.heroku.com/flint-share.git</p>
+<h3 id="r10---github-repository">R10 - GitHub Repository</h3>
+<p>The project can be accessed below:
+https://github.com/DamonJohnson/flint_marketplace</p>
+<p>Superseded repository due to corruption issues:
+https://github.com/DamonJohnson/sharing-platform-superseded</p>
+<h3 id="r11---description">R11 - Description</h3>
+<h5 id="purpose">Purpose</h5>
+<p>Flint is a two sided marketplace application that enables peer to peer sharing of outdoors equipment and adventure vehicles.
+From a single account users can hire and share items. When borrowing items, users can search for items name or category, make a booking for a specified date and pay the item owner.
+As a sharer users, can post their items with a description, item photo and set their own hire fee.</p>
+<p>The categories catered for by the applcation include:</p>
+<ul>
+<li>4WD vehicles</li>
+<li>Caravans</li>
+<li>Campervans</li>
+<li>Boats</li>
+<li>Bikes</li>
+<li>Kayaks and canoes</li>
+<li>Surf</li>
+<li>Snow</li>
+<li>Camping equipment</li>
+</ul>
+<h5 id="functionality--features">Functionality / features</h5>
+<ul>
+<li>Efficiently search for items by keywords, names and categories</li>
+<li>Book items with a drop down date selection which calculates the total fee for hire.</li>
+<li>List your own items with item description and photo upload.</li>
+<li>Order search results by price</li>
+</ul>
+<p>Planned Features</p>
+<ul>
+<li>Calendar view for item availability</li>
+<li>Payment via stripe</li>
+<li>Google maps API to see where items are located</li>
+<li>Built in peer to peer chat function</li>
+<li>Filter search results by location, category, price and keywords in a single search</li>
+<li>Transactional emails</li>
+</ul>
+<h5 id="sitemap">Sitemap</h5>
+<p><img src="docs/Site-map.drawio.png" alt="Site map"></p>
+<h5 id="screenshots">Screenshots</h5>
+<h5 id="landing-page">Landing Page:</h5>
+<p><img src="docs/screenshot1.jpeg" alt="Landing page"></p>
+<h5 id="index-page">Index Page:</h5>
+<p><img src="docs/screenshot4.jpeg" alt="Index page"></p>
+<h5 id="item-page">Item Page:</h5>
+<p><img src="docs/screenshot5.jpeg" alt="Item page"></p>
+<h5 id="add-listing-page">Add Listing Page:</h5>
+<p><img src="docs/screenshot6.jpeg" alt="Add Listing Page"></p>
+<h5 id="account-dashboard">Account Dashboard:</h5>
+<p><img src="docs/screenshot3.jpeg" alt="Account Dashboard"></p>
+<h5 id="target-audience">Target audience</h5>
+<p>Flint's target audience is outdoors and adventure consumer market.
+Within this consumer market, Flint has something to offer anyone who enjoys the outdoors.
+People who already have equipment and vehicles can share their own.
+While people who don't have access to equipment and vehicles can access equipment for affordable prices.</p>
+<h5 id="tech-stack-eg-html-css-deployment-platform-etc">Tech stack (e.g. html, css, deployment platform, etc)</h5>
+<p>Front-end</p>
+<ul>
+<li>HTML:markup</li>
+<li>CSS &amp; SCSS: styling</li>
+<li>Bootstrap framework: styling</li>
+</ul>
+<p>Back-end</p>
+<ul>
+<li>Ruby: programming language</li>
+<li>Framework: ruby on rails</li>
+<li>Postgresql: DBMS</li>
+</ul>
+<p>Deployed on Heroku</p>
+<h3 id="r12---user-stories">R12 - User Stories</h3>
+<h4 id="user-story-1-as-a-user-i-want-to-be-able-to-create-a-single-persistent-account-with-my-basic-profile-information">User Story 1: As a user I want to be able to create a single persistent account with my basic profile information</h4>
+<p>A user should be able to create a persistent account through the web app. The user should be able to log in after the account is created. Once the user is logged in they should have authority to hire items and also create their own listings. A profile of the users basic contact information should be linked to each user.</p>
+<h4 id="user-story-2-as-a-user-i-want-to-be-able-to-search-for-other-users-items-and-hire-them">User Story 2: As a user I want to be able to search for other user's items and hire them.</h4>
+<p>A user should be able to search for items by keyworks and category names. Once the user selects an specific item they should be able to insert the hire and return date and see the total cost for the booking. Once the booking is made the user should be able to view the booking in their profile and update or delete the booking.</p>
+<h4 id="user-story-3-as-a-user-i-want-to-list-and-share-my-own-items">User Story 3: As a user I want to list and share my own items</h4>
+<p>A user should be able to fill out a simple form for their item name, price and description. They should be able to upload a photo of their item that neatly fits the displayed item cards. The owner of the item should also be able to view the booking from their profile. At any time the user should be able to delete their booking or adjust details such as price. If the price is adjusted, it should not effect any pre-existing bookings.</p>
+<h4 id="user-story-4-as-an-unauthenticated-user-i-want-to-be-able-to-get-a-brief-idea-of-how-the-site-works-to-decide-if-it-is-worth-signing-up">User Story 4: As an unauthenticated user I want to be able to get a brief idea of how the site works to decide if it is worth signing up</h4>
+<p>An unauthenticated user should be able to search for and view all items. If the user tries to view specific items to make bookings or post an item of their own they should be prompted to create an account.</p>
+<h4 id="user-story-5-as-an-admin-i-want-to-be-able-to-manage-all-user-accounts-items-and-bookings">User Story 5: As an admin I want to be able to manage all user accounts, items and bookings.</h4>
+<p>Admins needs to be authorized to enact CRUD actions on all user accounts items and bookings. This is particularly important for cleaning up the application marketplace. If inactive users keep their items posted admins need to be able to remove the items.</p>
+<h4 id="user-story-6-as-a-user-i-want-to-make-sure-that-unauthorized-users-are-not-able-to-view-my-profile-information-or-editdelete-my-items-and-bookings">User Story  6: As a user I want to make sure that unauthorized users are not able to view my profile information or edit/delete my items and bookings.</h4>
+<p>The application should apply policy based authorization to ensure ensure each users content and sensitive information is protected.</p>
+<h4 id="user-story-7-as-a-user-i-want-to-be-able-to-view-the-availability-for-items---wip">User Story 7: As a user I want to be able to view the availability for items - WIP</h4>
+<p>A calendar feature needs to be implemented to each item to ensure that bookings are not placed on one item at the same time. The calendar also should allow the item owner to mark off periods where the items is unavailable for hire.</p>
+<h3 id="r13---wireframes">R13 - Wireframes</h3>
+<p>For complete set of wireframes refer to the wireframes.pdf file contained in the docs folder.</p>
+<h4 id="desktop-add-listing">Desktop add listing</h4>
+<p><img src="docs/001.jpeg" alt="Desktop add listing"></p>
+<h4 id="desktop-newedit-profile">Desktop New/Edit Profile</h4>
+<p><img src="docs/002.jpeg" alt="Desktop Profile"></p>
+<p>Desktop - Confirm Booking
+<img src="docs/003.jpeg" alt="Desktop - Confirm Booking"></p>
+<h4 id="mobile-landing-page">Mobile Landing page</h4>
+<p><img src="docs/004.jpeg" alt="Movile Landing page"></p>
+<h4 id="mobile-sign-up">Mobile Sign up</h4>
+<p><img src="docs/005.jpeg" alt="Mobile Sign Up"></p>
+<h4 id="mobile-index-items">Mobile Index Items</h4>
+<p><img src="docs/006.jpeg" alt="Mobile Index Items"></p>
+<h4 id="tablet-add-listing">Tablet Add Listing</h4>
+<p><img src="docs/007.jpeg" alt="Tablet Add Listing"></p>
+<h4 id="tablet-show-listing">Tablet Show Listing</h4>
+<p><img src="docs/008.jpeg" alt="Table Show Listing"></p>
+<h3 id="r14---entity-relationship-diagram-erd">R14 - Entity Relationship Diagram (ERD)</h3>
+<p><img src="docs/ERD.png" alt="Entity Relationship Diagram"></p>
+<h3 id="r15---high-level-components-abstractions">R15 - High-level Components (Abstractions)</h3>
+<p>The abstractions from the ERD can be summarised by the following models.</p>
+<h4 id="models">Models</h4>
+<ol>
+<li>
+<p>User Model
+The user model is used store the user's login information in the form of an email that is paired with a password. The management of user authorization and user model is handled in the application by the devise gem. The user has a one to many relationship with the item model meaning each user can post multiple items on the marketplace. By</p>
+</li>
+<li>
+<p>Profile Model
+The profile model is used to store all of the users personal information such as name and location information. The profile is kept separate from the user model so that the profile is not involved with the functionality of devise. The profile has a one to one relationship with the user model and cannot exist without the user model. The app has been developed so that a user is prompted to create a profile immediately after creating an account. While it is not yet implemented, a search by location feature will require the item to obtain the location information from the user profile to be considered for search results.</p>
+</li>
+<li>
+<p>Item Model
+The item model stores all of the information for each item which is represented by an instance of the item model. The item model belongs to the user model. Meaning an item cannot be created without a user being present. The user_id is listed as a foreign key within the item model. This allows each Item record to be uniquely identified to the user who was responsible for posting the item. The item model also contains a description of each model as well as the daily price as a float value. A category_id foreign key is used to link each item record to a category in a has_one relationship.</p>
+</li>
+<li>
+<p>Category Model
+The category model is relatively simple. It contains a category_id as a primary key that is then attached to a category name. The category name can then be searched within the application to quickly find suitable items for users.</p>
+</li>
+<li>
+<p>Booking Model
+The booking model is necessary for users to confirm the booking of an item. The booking model is able to link two users. The user who is listed as the owner of the item which can be found by tracing back from the item_id. And the user who is planning on hiring the item and who has created the booking, represented by the user_id, foreign key. The booking also contains a start and end date that can be used to determine the booking duration and overall booking fee. Booking fee is not included in the booking model itself as it is a function of the booking dates and the price of the item.</p>
+</li>
+</ol>
+<h4 id="controllers-and-views">Controllers and Views</h4>
+<ol>
+<li>
+<p>User Controller
+The user controller has been absorbed by the devise ruby gem. The only viers for the user are the sign up and log in views.</p>
+</li>
+<li>
+<p>Profile Controller
+The profile controller contains actions for CRUD functionality for the profile class. The show profile action renders the profile dashboard view. This view is one of the most important views across the application as it displays the user's profile information, listed items and bookings all in once place.</p>
+</li>
+<li>
+<p>Item Controller
+The Item controller interacts with the item model to obtain item data that is passed on to the view. It also allows for the creation of new item records. The key item views are the index view that displays all items following a search as well as the show item view that shows all details for a single item and allows a user to determine whether or not they would like to hire the item.</p>
+</li>
+<li>
+<p>Category Controller
+The category controller contains the set catgories action that sets a list of categories available for each item. The category controller does not have any associated views and has limited CRUD funcitonality by design. The scope of the marketplace is limited to adventure vehicles and outdoors equipment - therefore users should not be able to create extra categories outside of the allowed for scope.</p>
+</li>
+<li>
+<p>Booking Controller
+The booking controller allows the user to create new bookings for the items. The bookings controller provides basic CRUD functionality for these bookings and displays a users bookings in a table format.</p>
+</li>
+</ol>
+<h3 id="r16---third-party-services">R16 - Third Party Services</h3>
+<h4 id="postgresql">Postgresql</h4>
+<p>Postgresql has been used as the database management system in both development and produciton.
+Postgresql is an open source DBMS that has been used to store persistent data that is used by the application. Postgresql is an enterprise scale DBMS that is known for reliability, scalability and its ability to support a range of advanced datatypes.</p>
+<h4 id="heroku">Heroku</h4>
+<p>The application has been deployed on to Heroku's cloud platform. Heroku obtains the latest commit from github and runs the application through dynos. While the application is deployde directly though Heroku, Heroku itself is built upon Amazon Web Services infrastructure.</p>
+<h4 id="cloudinary">Cloudinary</h4>
+<p>Image handling is managed through Cloudinary. Cloudinary allows users to upload images which are then stored and manipulated by cloudinary for delivery on the web application.
+Cloudinary ensures photos are optimized for download as well offering methods of managing content cropping and scaling to fit within the layout of the application view. This is of particular importance in the items index pages that lists various item photos of difference sizes in rows of item cards.</p>
+<h3 id="r17---models-and-relationships">R17 - Models and Relationships</h3>
+<p>So when we need to explain the abstractions as part of R17, we want to explain why some resources have views, some do not, some have controllers, some do not, some have validation requirements, some do not</p>
+<h5 id="user-model">User Model</h5>
+<h5 id="hasone-profile-dependent-destroy"><code>has_one :profile, dependent: :destroy</code></h5>
+<p>The user model's <code>has_one</code> relationship with the profile model ensures that each user is linked to one and one one profile. The user record is created first and is then followde by creating a profile that is linked to the user record. As the profile has a <code>dependent:</code> association to the user, the profile cannot exist without the user. If the user record is deleted, the associated profile record is also deleted.</p>
+<h5 id="hasmany-items-dependent-destroy"><code>has_many :items, dependent: :destroy</code></h5>
+<p>The user models <code>has_many</code> relationship with the item model allows the user to create zero or many items that belong to the user. The users items can be directly called in active record through this association. As the item has a <code>dependent:</code> association to the user, the  item cannot exist without the user. If the user record is deleted, the associated item is also deleted.</p>
+<p><code>has_many :bookings, dependent: :destroy</code>
+The relationship from user to bookings is largely the same as the relationship from user to items. The user record is created first and then can create zero or many bookings that are associated with the user. The booking model is also depedent on the user in the same way as the profile and item model.</p>
+<h4 id="item-model">Item Model</h4>
+<h5 id="belongsto-category"><code>belongs_to :category</code></h5>
+<p>The item models <code>belongs_to</code> relationship with the item model means the the category can exist without the item. The category is not dependent on the item. The item can have one and only one category which is represented within the item table as a category_id foreign key.</p>
+<h5 id="belongsto-user"><code>belongs_to :user</code></h5>
+<p>The item models <code>belongs_to</code> relationship with the user model means that user can exist without the item but the item cannot exist without the user. Each item record can must have one and only one user that is associated to. The user represents the item's owner who is responsible for listing the item in the marketplace and is represented within the item table by the user_id foreign key.</p>
+<h5 id="hasmany-bookings"><code>has_many :bookings</code></h5>
+<p>The item models <code>has_many</code> relationship to the booking model means that an item can be booked by multiple users for multiple dates at any given time. The item can also have zero bookings.</p>
+<h5 id="hasoneattached-image"><code>has_one_attached :image</code></h5>
+<p>The item models <code>has_one_attached</code> relationship to images means that a user can attach a single image when they create an instance of the Item class. The Item model also performs validation to ensure that a image is attached.</p>
+<h4 id="category-model">Category Model</h4>
+<h5 id="hasmany-items"><code>has_many :items</code></h5>
+<p>The category models <code>has_many</code> relationship with the item model means that each category can be associated to zero or many items.</p>
+<h4 id="profile-model">Profile Model</h4>
+<h5 id="belongsto-user"><code>belongs_to :user</code></h5>
+<p>The profile models <code>belongs_to</code> relationship with the user model means that each profile must have one and only one user that it is associated to. The profile cannot exist without the user. The profile table has a column that stored the user_id as a foreign key for association to the user.</p>
+<h4 id="booking-model">Booking Model</h4>
+<h5 id="belongsto-user"><code>belongs_to :user</code></h5>
+<p>The booking models <code>belongs_to</code> relationship with the user model means that the booking cannot exist without the user and that the booking is associated with one and only one user. The user_id is stored in the booking table as a foreign key for association. The user represents the person who has created the booking. Another user can be linked to the booking through the item as the owner of the item that is being shared to the user who created the booking. The user who is the owner of the item is not directly stored within the booking table and must be obtained through active record by first referencing the item from the booking.</p>
+<h5 id="belongsto-item"><code>belongs_to :item</code></h5>
+<p>The booking models <code>belongs_to</code> relationship with the item means that each booking record is associated to one and only one item and the booking cannot exist without the item. The item_id is stored as foreign key in the booking table.</p>
+<h3 id="r18---database-relations">R18 - Database Relations</h3>
+<h4 id="user-model">User Model</h4>
+<p>The user model contains a user_id as a primary key, and has a column for email (string) and password (string). The user model has a one to one relationship with the profile model and a one to many relationship to the item model and booking model.</p>
+<h5 id="profile-model">Profile Model</h5>
+<p>The profile model contains a profile_id as a primary key and has columns for first name(string), last name (string), address (string), city (string), postcode (integer), and state (string). The profile has a one to one relationship with the user model. Meaning</p>
+<h4 id="item-model">Item Model</h4>
+<p>The item model contains an item_id as a primary key and has columns for title (string), description (string), price (float). It also stores foreign keys for the user model and category model to allow for their association to be represented in active record. The item model has a many to one relationship with the user and category models and a one to many relationship with the booking model.</p>
+<h5 id="category-model">Category Model</h5>
+<p>The category model contains a category_id as a primary key and has a column for category name (string) which represents the type of category from a predetermined list. The category model has a one to one relationship with the item model.</p>
+<h4 id="booking-model">Booking Model</h4>
+<p>The booking model contains a booking_id as a primary key and has a column for the start date (date) and end date (date). Associations for the user model and item model are made possible by the user_id and item_id that are stored as foreign keys for each booking record. The booking model has a many to one relationship with the user who is responsible for making the booking as well as a many to one relationship with the item model.</p>
+<h3 id="r19---database-schema">R19 - Database Schema</h3>
+<p>The database schema has been implemented in accordance with the entity relationship diagram displayed under Requirement 14.</p>
+<h3 id="r20---project-management">R20 - Project Management</h3>
+<p>The project was largely developed through a waterfall task allocation approach rather than an agile development life cycle.</p>
+<p>First the basic functionality requirements of the project were abstracted from the project brief.
+User stories were created to flesh out the functionality of the project. Each user story was broken down in to checklist of tickets that allowed the functionality of the site to be sequentially implemented.</p>
+<p>A trello kanban board was set up to display and allocate tasks for the project. Each user story and subsidiary task was posted in a trello kanban board available here: https://trello.com/invite/b/aE24jevh/4200364066b8ac70b6d976376e9fc497/flint-sharing-platform. While the basic functionality of the project has been implemented, extra features will be continue to be developed to improve the user experience. These features will be added to the kanban board and worked on over time.</p>
+
+</body>
+</html>
