@@ -3,6 +3,22 @@
       padding-left: 3rem;
       padding-right: 3rem;
   }
+
+  .price {
+    position: absolute;
+    right: 1rem;
+    bottom: -2rem;
+  }
+
+
+  div.card-body {
+    position: absolute;
+    width: 100%;
+    bottom: 3rem;
+    background-color: white;
+    z-index: 10;
+
+  }
 </style>
 <% if @items.length == 0 %>
   <br>
@@ -13,9 +29,9 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <% @items.each do |item| %>
         <div class="col">
-          <div class="card">
+          <div class="card" style='height: 25rem;'>
             <% if item.image.attached?%>
-              <%= cl_image_tag item.image.key,  :crop=>"thumb", cloud_name: 'damonjohnson' %>
+              <%= cl_image_tag item.image.key, :crop=>"thumb", cloud_name: 'damonjohnson' %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= link_to item.title, item %></h5>
@@ -24,7 +40,8 @@
                 <div class="btn-group">
                   <p class="card-text"></p>
                 </div>
-                <large class="text">$<%= item.price %>0 / day</large>
+
+                <large class="price">$<%= item.price %>0 / day</large>
               </div>
             </div>
           </div>
