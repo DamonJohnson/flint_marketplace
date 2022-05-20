@@ -1,0 +1,73 @@
+<style>
+
+.table {
+    
+}
+.mb-2 input{
+    width: 100%!important;
+    height: 2rem;
+}
+
+
+
+</style>
+
+<%= form_with(model: @profile, data: {turbo: false}) do |f| %>
+  <table class="table">
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">First name:</th>
+        <td>  
+          <fieldset class="mb-2">
+            <%= f.text_field :first_name %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Last name:</th>
+        <td>
+          <fieldset class="mb-2">
+            <%= f.text_field :last_name %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Address:</th>
+        <td>  
+          <fieldset class="mb-2">
+            <%= f.text_field :address %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">City:</th>
+        <td>
+          <fieldset class="mb-2">
+            <%= f.text_field :city %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">State:</th>
+        <td>
+          <fieldset class="mb-2">
+            <%= f.select :state, @states %>
+          </fieldset>
+        </td>
+      </tr>
+       <tr>
+        <th scope="row">Postcode:</th>
+        <td>
+          <fieldset class="mb-2">
+            <%= f.number_field :postcode %>
+          </fieldset>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <fieldset>
+    <%= f.submit class: 'btn btn-primary' %>
+  </fieldset>
+<% end %>

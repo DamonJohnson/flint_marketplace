@@ -1,18 +1,22 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Booking ID</th>
-      <th scope="col">Item</th>
-      <th scope="col">Daily Fee</th>
-      <th scope="col">Hire Date</th>
-      <th scope="col">Return Date</th>
-      <th scope="col">Duration (days) </th>
-      <th scope="col">Total Fee </th>
-    </tr>
-  </thead>
-  <% @bookings.each do |booking| %>
-    <tbody>
+<% if @bookings.length == 0 %>
+<br></br>
+  <p>You have no bookings. </p>
+<%else%>
+  <table class="table">
+    <thead>
       <tr>
+        <th scope="col">Booking ID</th>
+        <th scope="col">Item</th>
+        <th scope="col">Daily Fee</th>
+        <th scope="col">Hire Date</th>
+        <th scope="col">Return Date</th>
+        <th scope="col">Duration (days) </th>
+        <th scope="col">Total Fee </th>
+      </tr>
+    </thead>
+    <% @bookings.each do |booking| %>
+      <tbody>
+        <tr>
           <td><%= booking.id %> </td>
           <td><%= link_to Item.find(booking.item_id).title, Item.find(booking.item_id) %> </td>
           <td>$<%= Item.find(booking.item_id).price %>0</td>
@@ -21,7 +25,7 @@
           <td><%= duration(booking) %></td>
           <td>$<%= total_fee(booking)  %>0</td>
           <td><%= link_to('Manage booking', edit_booking_path(booking), class: 'btn btn-primary me-2') %></td>
-      </tr>
-    <% end %>
-  </tbody>
-
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>

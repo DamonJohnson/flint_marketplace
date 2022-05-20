@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, only: [:show, :edit, :update, :destroy, :check_auth]
   before_action :check_auth, only: [:edit, :update, :destroy]
-  before_action :get_categories, only: [:new, :edit, :update, :create]
+  before_action :set_categories, only: [:new, :edit, :update, :create]
+
 
  
   
@@ -77,6 +78,10 @@ class ItemsController < ApplicationController
 
    def require_params
     return params.require(:item).permit(:title, :description, :price, :user_id, :category_id, :image)
+  end
+
+  def set_categories
+    @categories = Category.create([{name: "4WD"},{name: "Campervan"},{name: "Caravan"},{name: "Boat"},{name: "Kayak / Canoe"},{name: "Bike"},{name: "Camping Equipment"},{name: "Surf"},{name: "Snow"},{name: 'Other'}])
   end
 
 end

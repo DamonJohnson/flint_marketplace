@@ -32,5 +32,5 @@ Profile.destroy_all
 # # Profile.create(user_id: User.third.id, first_name: 'randal', last_name: 'johnson', address: "123 Foo Street", city: 'Brisbane', postcode: 4000, state: 'Queensland')
 # # Profile.create(user_id: User.last.id, first_name: 'greg', last_name: 'simpson', address: "4 Collins Street", city: 'Docklands', postcode: 3005, state: 'Victoria')
 
-categories = Category.create([{name: "4WD"},{name: "Campervan"},{name: "Caravan"},{name: "Boat"},{name: "Kayak / Canoe"},{name: "Bike"},{name: "Camping Equipment"},{name: "Surf"},{name: "Snow"},{name: 'Other'}])
+# categories = Category.create([{name: "4WD"},{name: "Campervan"},{name: "Caravan"},{name: "Boat"},{name: "Kayak / Canoe"},{name: "Bike"},{name: "Camping Equipment"},{name: "Surf"},{name: "Snow"},{name: 'Other'}])
 

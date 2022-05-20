@@ -1,32 +1,3 @@
-<h2>Create your Profile</h2>
-
-<%= form_with(model: @profile, data: {turbo: false}) do |f| %>
-  <fieldset class="mb-2">
-    <%= f.label :first_name %>:
-    <%= f.text_field :first_name %>
-  </fieldset>
-  <fieldset class="mb-2">
-    <%= f.label :last_name %>:
-    <%= f.text_field :last_name %>
-  </fieldset>
-  <fieldset class="mb-2">
-    <%= f.label :address %>:
-    <%= f.text_field :address %>
-  </fieldset>
-  <fieldset class="mb-2">
-    <%= f.label :city %>:
-    <%= f.text_field :city %>
-  </fieldset>
-  <fieldset class="mb-2">
-    <%= f.label :state %>:
-    <%= f.select :state, @states %>
-  </fieldset>
-   <fieldset class="mb-2">
-    <%= f.label :postcode %>:
-    <%= f.text_field :postcode %>
-  </fieldset>
-  <fieldset>
-    <%= f.submit class: 'btn btn-primary' %>    
-  </fieldset>
-  <% end %>
-
+<h1>Create your Profile</h1>
+<br>
+<%= render 'partials/profile_form' %>
