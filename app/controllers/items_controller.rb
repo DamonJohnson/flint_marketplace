@@ -1,6 +1,4 @@
 class ItemsController < ApplicationController
-  # REMOVE FOR PRODUCTION!!!
-  skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, only: [:show, :edit, :update, :destroy, :check_auth]
   before_action :check_auth, only: [:edit, :update, :destroy]
@@ -24,10 +22,12 @@ class ItemsController < ApplicationController
 
   end
 
+  # Leverages devise current_user method to create item where item is controllers
   def create
     begin
     @item = current_user.items.new(item_params)
     @item.save!
+    # User is assigned item_owner scoped to item for item policy
     current_user.add_role :item_owner, @item
     flash[:notice] = "Item listed. Thanks for sharing."
     redirect_to @item
@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
 
   def edit
   end
+
 
   def update 
     begin
@@ -52,7 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy  
-    # @item.image.purge
+    @item.image.purge
     @item.destroy
     redirect_to items_path
   end
@@ -60,6 +61,7 @@ class ItemsController < ApplicationController
 
   private
 
+  # Checks if current user is creator of @item
   def check_auth
    authorize @item
   end
@@ -72,14 +74,17 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
+# Does not require item id. Used for creating new items
   def item_params
     return params.permit(:title, :description, :price, :user_id, :category_id, :image)
   end
 
+# Returns parameters for current @item, requires item id
    def require_params
     return params.require(:item).permit(:title, :description, :price, :user_id, :category_id, :image)
   end
 
+  # Establishes set of categories for item creation and searching. Needs to be item controller as it is called before creation of items.
   def set_categories
     @categories = Category.create([{name: "4WD"},{name: "Campervan"},{name: "Caravan"},{name: "Boat"},{name: "Kayak / Canoe"},{name: "Bike"},{name: "Camping Equipment"},{name: "Surf"},{name: "Snow"},{name: 'Other'}])
   end

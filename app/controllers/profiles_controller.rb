@@ -1,24 +1,26 @@
 class ProfilesController < ApplicationController
-# REMOVE FOR PRODUCTION!
-skip_before_action :verify_authenticity_token
 before_action :authenticate_user!
 before_action :find_profile, only: [:show, :edit, :update, :destroy, :check_auth]
 before_action :check_auth, only: [:show, :edit, :update, :destroy]
 before_action :list_states, only: [:new, :edit]
 
 
+
   def index
-    @profiles = Profile.all
+  @profiles = Profile.all
   end
 
+  #  Builds new profile upon creation of account
   def new 
   @profile = current_user.build_profile
   end
 
+  # Builds new user and saves with association to current_user
   def create
     begin
     @profile = current_user.build_profile(profile_params)
     @profile.save!
+    # Assigns role of profile_owner to current user for authorization checks
     current_user.add_role :profile_owner, @profile
     flash[:notice] = "Profile saved"
     redirect_to @profile
@@ -28,6 +30,8 @@ before_action :list_states, only: [:new, :edit]
     end
   end
 
+
+  # Require @items and @books to build @profile page. @profile page acts as a dashboard for user.
   def show
     @profile = Profile.find(params[:id])
     @items = current_user.items.all

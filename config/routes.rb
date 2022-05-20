@@ -22,8 +22,7 @@ Rails.application.routes.draw do
   delete 'items/:id', to: 'items#destroy'
 
   get 'items/:item_id/bookings/new', to: 'bookings#new', as: 'new_booking'
-  patch 'bookings/:id', to: 'bookings#update'
-  put 'bookings/:id', to: 'bookings#save'
+  put 'bookings/:id', to: 'bookings#update'
   post 'items/:item_id/bookings/new', to: 'bookings#create'
   delete 'bookings/:id', to: 'bookings#destroy', as: 'delete_booking'
   get 'bookings', to: 'bookings#index', as: 'bookings'

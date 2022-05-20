@@ -5,7 +5,7 @@ class Item < ApplicationRecord
     has_many :bookings
 
     has_one_attached :image
-
+    
     validates :title, :description, :category, :price, :image, presence: true
     validates :price, comparison: { greater_than: 0}
 end 
