@@ -31,7 +31,7 @@
         <div class="col">
           <div class="card" style='height: 25rem;'>
             <% if item.image.attached?%>
-              <%= cl_image_tag item.image.key, :crop=>"fit", cloud_name: 'damonjohnson' %>
+              <%= cl_image_tag item.image.key, :crop=>"fill", cloud_name: 'damonjohnson' %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= link_to item.title, item %></h5>
