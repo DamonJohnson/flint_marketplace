@@ -51,4 +51,4 @@ class ItemPolicy
 
     attr_reader :user, :scope
   end
-end
+en

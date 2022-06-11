@@ -14,11 +14,11 @@ My solution to this problem is a two sided marketplace for sharing outdoors equi
 ### R8 - Why Does the Problem Need Solving
 By solving this problem, an application like Flint could forseeably have the following flow on effects:
 
-#### Sustainability
-Increasing the sharing of goods means that as society we are consuming less which has wide positive impacts on sustainability. This is an ever present and growing issues worldwide and can the most direct way consumers can impact sustainability is by reducing their personal level of consumption.
-
 #### A low cost alternative to adventure
 By provinging a simple and low cost way of hiring equipment and vehicles lowers the barrier of entry for lower income earners to enjoy the outdoors.
+
+#### Sustainability
+Increasing the sharing of goods means that as society we are consuming less. Reducing our consumer footpring it often the most direct way consumers can impact sustainability.
 
 #### Adventure Travel
 Users can travel to a location and then hire equipment at their destination rather than transporting equipment or vehicles long distances to be enjoyed.
@@ -31,7 +31,7 @@ Creates a positive community for people who enjoy the outdoors to meet like mind
 
 
 ### R9 - Link
-https://git.heroku.com/flint-share.git
+https://flint-share.herokuapp.com/
 
 
 ### R10 - GitHub Repository
